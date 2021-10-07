@@ -1,7 +1,7 @@
 import {GET_ALL_CHARACTERS} from "./actions"
 
 const initialState={
-    characters: [],
+    characters: {},
     characterById: {},
     episodes:[]
 }

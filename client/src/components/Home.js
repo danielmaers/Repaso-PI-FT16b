@@ -14,6 +14,14 @@ export default function Home(){
 console.log("CHARACTERS", characters)
 
     return (<div>
-        <p>{characters[0]?.name}</p>
+        {characters.result && characters.result.map(e=>{
+            return (
+                <div key={e.id}>
+                    <img src={e.image} alt={e.name} />
+                    <p>{e.name}</p>                    
+                </div>
+            )
+        })}  
+              
     </div>)
 }
