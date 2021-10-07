@@ -1,9 +1,9 @@
 import {GET_ALL_CHARACTERS} from "./actions"
 
 const initialState={
-    characters= [],
-    characterById= {},
-    episodes=[]
+    characters: [],
+    characterById: {},
+    episodes:[]
 }
 
 function reducer(state = initialState, {type, payload}) {
