@@ -2,7 +2,7 @@ import axios from 'axios'
 export const GET_ALL_CHARACTERS = "GET_ALL_CHARACTERS"
 
 
-export function getCharacters(name, order, page){
+export function getCharacters({name, order, page}){
 return (dispatch)=>{
     axios.get(`http://localhost:3001/characters?name=${name||""}&order=${order|| ""}&page=${page||1}`)
     .then(characters=>{
