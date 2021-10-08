@@ -1,27 +1,39 @@
-import React, {useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux"
-import { getCharacters } from "../redux/actions";
+import React from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {getCharacters ,setPage} from "../Redux/actions/index.js";
+import Card from "./Card.js"
 
 
-export default function Home(){
-    let dispatch = useDispatch()
-    let characters = useSelector(state=> state.characters)
 
+const Home = () => {
+    const dispatch = useDispatch()
+    const { characters, name, order, page } = useSelector(state=> state)
+    
+   
+    
     useEffect(()=>{
-        dispatch(getCharacters({})) 
-     },[dispatch])
+       dispatch(getCharacters({})) 
+    },[dispatch])
 
-console.log("CHARACTERS", characters)
-
-    return (<div>
-        {characters.result && characters.result.map(e=>{
-            return (
-                <div key={e.id}>
-                    <img src={e.image} alt={e.name} />
-                    <p>{e.name}</p>                    
-                </div>
-            )
-        })}  
-              
-    </div>)
+    const changePage = (page)=>{
+        dispatch(getCharacters({page,name,order}))
+        dispatch(setPage(page))
+    }
+    
+    return (
+        <div>
+            {
+                characters?.result?.length>0 && characters.result.map((e)=>{
+                   return <Card status={e.status} image={e.image} name={e.name} id={e.id} key={e.id}/>
+                })
+            }
+                <button disabled={page -1 === 0} onClick={()=> {changePage(page -1)}}>previous</button>
+                    <label>{page}</label>
+                <button disabled={characters?.count <= (page * 5)} onClick={()=>{changePage(page +1)}}>next</button>
+            
+        </div>
+    )
 }
+
+export default Home
