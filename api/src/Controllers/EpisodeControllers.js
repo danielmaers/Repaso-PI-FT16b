@@ -6,7 +6,7 @@ async function preCharge(){
     try {
         let episodes = (await axios.get("https://rickandmortyapi.com/api/episode")).data.results
         episodes = episodes.map(e=>{
-            return {name: e.name, episode: e.episode}
+            return {id: e.id, name: e.name, episode: e.episode}
         })
 
         episodes=  await Promise.all(episodes.map(e=> Episodes.findOrCreate({where: e})))

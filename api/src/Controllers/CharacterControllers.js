@@ -43,15 +43,17 @@ async function getCharacters(req, res, next){
         //#endregion
         
         //#region ORDER
-        if(order === "asc" || !order || order === ""){
-            allChars = allChars.sort((a,b) =>{
-                return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-            })
-        }else{
-            allChars = allChars.sort((a,b) =>{
-                return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
-            })
-        }
+
+        // if(order === "asc" || !order || order === ""){
+        //     allChars = allChars.sort((a,b) =>{
+        //         return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        //     })
+        // }else{
+        //     allChars = allChars.sort((a,b) =>{
+        //         return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
+        //     })
+        // }
+        
         //#endregion
 
         //#region PAGE
